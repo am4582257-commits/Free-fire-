@@ -45,7 +45,10 @@ jobs:
       - name: Import project
         run: godot --headless --editor --path . --import
       - name: Install Android build template
-        run: godot --headless --editor --path . --install-android-build-template --quit
+        run: |
+          mkdir -p android/build
+          unzip -q "$HOME/.local/share/godot/export_templates/4.4.1.stable/android_source.zip" -d android/build
+          test -f android/build/build.gradle
       - name: Export APK
         run: mkdir -p build && godot --headless --path . --export-debug Android build/ABHI-FIRE-ROYAL.apk
       - name: Upload APK artifact
