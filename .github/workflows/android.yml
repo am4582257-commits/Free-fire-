@@ -16,12 +16,17 @@ jobs:
         with:
           version: 4.4.1
           use-dotnet: false
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
       - name: Install Android SDK
         uses: android-actions/setup-android@v3
         with:
           packages: platform-tools
       - name: Install Android packages
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0" "cmdline-tools;latest"
+        run: sdkmanager "platforms;android-34" "build-tools;34.0.0" "platform-tools" "cmdline-tools;latest"
       - name: Install Godot export templates
         run: |
           mkdir -p "$HOME/.local/share/godot/export_templates/4.4.1.stable"
