@@ -165,10 +165,10 @@ func _physics_process(delta: float) -> void:
 	player.move_and_slide()
 	for bot in bots.duplicate():
 		if not is_instance_valid(bot): bots.erase(bot); continue
-		var toward:=player.global_position-bot.global_position
-		var dist:=toward.length()
+		var toward: Vector3=player.global_position-bot.global_position
+		var dist: float=toward.length()
 		if dist>4:
-			var v:=toward.normalized()
+			var v: Vector3=toward.normalized()
 			bot.velocity.x=v.x*2.4
 			bot.velocity.z=v.z*2.4
 			bot.look_at(Vector3(player.global_position.x,bot.global_position.y,player.global_position.z))
