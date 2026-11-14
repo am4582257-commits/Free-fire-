@@ -45,7 +45,7 @@ jobs:
       - name: Import project
         run: godot --headless --editor --path . --import
       - name: Install Android build template
-        run: yes | godot --headless --editor --path . --install-android-build-template
+        run: godot --headless --editor --path . --install-android-build-template --quit
       - name: Export APK
         run: mkdir -p build && godot --headless --path . --export-debug Android build/ABHI-FIRE-ROYAL.apk
       - name: Upload APK artifact
